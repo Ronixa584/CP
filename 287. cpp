@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int l=0,h=nums.size()-1,c;
+        while(l<=h){
+            int mid=l+(h-l)/2;
+            c=0;
+            for(auto i:nums){
+                if(i<=mid) c++;
+            }
+            if(c<=mid) l=mid+1;
+            else h=mid-1;
+        }
+        return l;
+    }
+};
