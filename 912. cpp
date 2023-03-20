@@ -1,0 +1,15 @@
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        priority_queue<int,vector<int>,greater<int>>pq;
+        int n=nums.size();
+        for(auto i:nums){
+            pq.push(i);
+        }
+        for(auto i=0;i<n;i++){
+            nums[i]=pq.top();
+            pq.pop();
+        }
+        return nums;
+    }
+};
