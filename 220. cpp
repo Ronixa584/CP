@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int indexDiff, int valueDiff) {
+        multiset<int>ms;
+        int i=0,j=0;
+        while(j<nums.size()){
+            auto up=ms.upper_bound(nums[j]);
+            if((up!=ms.end() && *up-nums[j]<=valueDiff) || (up!=ms.begin() && nums[j]-*(--up)<=valueDiff)){
+                return true;
+            }
+            ms.insert(nums[j]);
+            if(ms.size()==indexDiff+1){
+                ms.erase(nums[i]);
+                i++;
+            }
+            j++;
+        }
+        return false;
+    }
+};
