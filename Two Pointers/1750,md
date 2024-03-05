@@ -1,0 +1,31 @@
+# C++
+<!-- Describe your first thoughts on how to solve this problem. -->
+
+# 1750. Minimum Length of String After Deleting Similar Ends
+<!-- Describe your approach to solving the problem. -->
+
+# Complexity
+- Time complexity: O(n)
+<!-- Add your time complexity here, e.g. $$O(n)$$ -->
+
+- Space complexity: O(1)
+<!-- Add your space complexity here, e.g. $$O(n)$$ -->
+
+# Code
+```
+class Solution {
+public:
+    int minimumLength(string s) {
+        int i = 0, j = s.size() - 1;
+        while (i < j && s[i] == s[j]) {
+            char temp = s[i];
+            while (i < j && s[i] == temp) {
+                i++;
+            }
+            while (j >= i && s[j] == temp) {
+                j--;
+            }
+        }
+        return j - i + 1;
+    }
+};
